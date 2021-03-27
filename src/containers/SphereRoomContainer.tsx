@@ -13,6 +13,11 @@ function ShereRoomContainer() {
 
     const bornSphereListener = useCallback(function(this:HTMLDivElement) {
         this.removeEventListener('animationend', bornSphereListener);
+        // setSphere({
+        //     ...sphere,
+        //     rotY: Math.random() * 360,
+        //     rotZ: Math.random() * 360
+        // });
         if(sphere.rotY >= 360){
             setSphere({
                 ...sphere,
@@ -28,9 +33,15 @@ function ShereRoomContainer() {
         } else {
             setSphere({
                 ...sphere,
-                rotY: sphere.rotY + 80
+                rotY: sphere.rotY + 80,
+                rotZ: sphere.rotZ + 5,
             });
         }
+        window.scrollTo({
+            top: (document.body.scrollHeight - window.innerHeight) * ((360 % sphere.rotY) / 360),
+            left: (document.body.scrollWidth - window.innerWidth) * ((360 % sphere.rotZ) / 360),
+            behavior: "smooth"
+        });
     }, [sphere]);
 
     const spinSphereListener = useCallback(function(this:HTMLDivElement){
@@ -74,6 +85,11 @@ function ShereRoomContainer() {
     /* 두개씩 만들어지는 문제가 있음. 근데 갬성 있어서 놔둠. */
     useEffect(() => {
         setTimeout(() => {
+            // setSphere({
+            //     ...sphere,
+            //     rotY: Math.random() * 360,
+            //     rotZ: Math.random() * 360
+            // });
             setSphere({
                 ...sphere,
                 rotY: 0,

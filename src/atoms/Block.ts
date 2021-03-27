@@ -51,6 +51,7 @@ const TitleBlock = styled.div`
 
     & > h1 {
         text-shadow: 2px 2px 2px gray;
+        transform: translateZ(-150px);
     }
 `;
 
