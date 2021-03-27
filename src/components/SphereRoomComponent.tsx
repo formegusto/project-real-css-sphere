@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShpereRoom, SphereBox } from '../atoms/Block';
+import { ShpereRoom, SphereBox, TitleBlock } from '../atoms/Block';
 import { Sphere } from '../atoms/Sphere';
 import { SphereFactory } from '../types/SphereType';
 
@@ -22,6 +22,11 @@ function SphereRoomComponent(props: Props) {
             <SphereBox
                 ref={props.refBox}
             />
+            <TitleBlock>
+                <h1>Real</h1>
+                <h1>CSS</h1>
+                <h1>Sphere</h1>
+            </TitleBlock>
         </ShpereRoom>
     );
 }

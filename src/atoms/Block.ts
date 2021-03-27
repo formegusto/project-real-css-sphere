@@ -28,7 +28,6 @@ const SphereBox = styled.div`
         position: absolute;
 
         box-sizing: border-box;
-        border: 3px solid black;
         border-radius: 100%;
 
         ${css`
@@ -37,7 +36,26 @@ const SphereBox = styled.div`
     }
 `;
 
+const TitleBlock = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    position: absolute;
+
+    color: white;
+    font-size: 2rem;
+    line-height: 1.55rem;
+
+    & > h1 {
+        text-shadow: 2px 2px 2px gray;
+    }
+`;
+
 export {
     ShpereRoom,
     SphereBox,
+    TitleBlock,
 }

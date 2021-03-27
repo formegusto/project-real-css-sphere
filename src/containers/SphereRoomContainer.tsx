@@ -21,7 +21,7 @@ function ShereRoomContainer() {
             });
         } else if(sphere.rotZ >= 360) {
             setSphere({
-                startY: sphere.startY + 20,
+                startY: sphere.startY + 15,
                 rotY: sphere.startY,
                 rotZ: sphere.rotZ + 45
             });
@@ -39,6 +39,7 @@ function ShereRoomContainer() {
             const newSphere = document.createElement("div");
             newSphere.classList.add("sphere");
             newSphere.style.transform = "rotateY(" + sphere.rotY + "deg) rotateX(" + sphere.rotZ + "deg)";
+            newSphere.style.border = `3px solid rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`
             newSphere.addEventListener('animationend', bornSphereListener);
 
             refBox.current.appendChild(newSphere);
@@ -47,16 +48,20 @@ function ShereRoomContainer() {
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
+            const pageX = window.pageXOffset;
+            const pageAllX = document.body.scrollWidth - window.innerWidth;
+
             const pageY = window.pageYOffset;
             const pageAllY = document.body.scrollHeight - window.innerHeight;
 
+            const boxX = 360 * (pageX / pageAllX);
             const boxY = 360 * (pageY / pageAllY);
 
             console.log(boxY);
             console.log(pageY);
             console.log(pageAllY);
             if(refBox.current) {
-                refBox.current.style.transform = "rotateY(" + boxY + "deg)";
+                refBox.current.style.transform = "rotateX("+ boxY +"deg) rotateY(" + boxX + "deg)";
             }
         });
       }, []);
@@ -68,11 +73,13 @@ function ShereRoomContainer() {
 
     /* 두개씩 만들어지는 문제가 있음. 근데 갬성 있어서 놔둠. */
     useEffect(() => {
-        setSphere({
-            ...sphere,
-            rotY: 0,
-            rotZ: sphere.rotZ + 45
-        });
+        setTimeout(() => {
+            setSphere({
+                ...sphere,
+                rotY: 0,
+                rotZ: sphere.rotZ + 45
+            });
+        }, 1000);
     }, // eslint-disable-next-line 
     []); 
 
