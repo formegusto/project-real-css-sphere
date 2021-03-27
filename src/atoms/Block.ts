@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { AniBorn } from "../animation/SphereAni";
 
 const ShpereRoom = styled.div`
     display: flex;
@@ -12,6 +13,9 @@ const ShpereRoom = styled.div`
 `;
 
 const SphereBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
 
     width: 300px;
@@ -22,12 +26,13 @@ const SphereBox = styled.div`
     & > .sphere {
         position: absolute;
 
-        width: 300px;
-        height: 300px;
-
         box-sizing: border-box;
-        border: 1px solid black;
+        border: 3px solid black;
         border-radius: 100%;
+
+        ${css`
+            animation: ${AniBorn} .3s forwards;
+        `};
     }
 `;
 

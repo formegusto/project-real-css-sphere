@@ -13,9 +13,10 @@ function SphereRoomComponent(props: Props) {
     return (
         <ShpereRoom>
             <Sphere 
+                className="first"
                 ref={props.refSphere}
                 style={{
-                    transform: "rotateY(" + props.sphere.rotY + "deg)"
+                    transform: "rotateY(" + props.sphere.rotY + "deg) rotateX(" + props.sphere.rotZ + "deg)"
                 }}>
             </Sphere>
             <SphereBox

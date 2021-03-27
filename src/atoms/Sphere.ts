@@ -6,7 +6,7 @@ const Sphere = styled.div`
 
     border: 1px solid black;
     border-radius: 100%;
-
+    
     transform-style: preserve-3d;
     transition: .5s;
 `;
