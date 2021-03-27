@@ -14,17 +14,17 @@ function ShereRoomContainer() {
     const bornSphereListener = useCallback(function(this:HTMLDivElement) {
         this.removeEventListener('animationend', bornSphereListener);
         if(sphere.rotY >= 360){
-            // setSphere({
-            //     ...sphere,
-            //     rotY: sphere.startY,
-            //     rotZ: sphere.rotZ + 45
-            // });
+            setSphere({
+                ...sphere,
+                rotY: sphere.startY,
+                rotZ: sphere.rotZ + 45
+            });
         } else if(sphere.rotZ >= 360) {
-            // setSphere({
-            //     startY: sphere.startY + 20,
-            //     rotY: sphere.startY,
-            //     rotZ: sphere.rotZ + 45
-            // });
+            setSphere({
+                startY: sphere.startY + 20,
+                rotY: sphere.startY,
+                rotZ: sphere.rotZ + 45
+            });
         } else {
             setSphere({
                 ...sphere,
@@ -44,6 +44,22 @@ function ShereRoomContainer() {
             refBox.current.appendChild(newSphere);
         }
     }, [sphere, bornSphereListener]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            const pageY = window.pageYOffset;
+            const pageAllY = document.body.scrollHeight - window.innerHeight;
+
+            const boxY = 360 * (pageY / pageAllY);
+
+            console.log(boxY);
+            console.log(pageY);
+            console.log(pageAllY);
+            if(refBox.current) {
+                refBox.current.style.transform = "rotateY(" + boxY + "deg)";
+            }
+        });
+      }, []);
 
     useEffect(() => {
         if(refSphere.current)

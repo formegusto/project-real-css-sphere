@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { AniBorn } from "../animation/SphereAni";
 
 const ShpereRoom = styled.div`
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
